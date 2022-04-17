@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Service from '../Service/Service';
+import './Services.css';
 
 const Services = () => {
 
@@ -15,7 +16,7 @@ const Services = () => {
     return (
         <div>
             <div>
-                <h2>Services: {services.length}</h2>
+                <h1>Services</h1>
                 <div>
                     {
                         services.map(service => <Service
