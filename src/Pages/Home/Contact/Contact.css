@@ -36,21 +36,16 @@
     border: 2px solid rgb(79, 24, 219);
 }
 
-@media (max-width: 950px) {
+@media only screen and (max-width: 576px) {
     .contact-detail{
         grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 500px) {
+@media only screen and (min-width: 577px) and (max-width: 992px) {
     .contact-detail{
-        display: flex;
-        width: 100%;
-        overflow-x: hidden;
-        flex-direction: column;
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center;
+
+        grid-template-columns: 1fr 1fr;
     }
 
     .contact-photo img{

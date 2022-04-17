@@ -1,0 +1,11 @@
+footer{
+    height: 200px;
+    background-color: rgba(5, 5, 13, 0.688);
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+}
+
+footer h4 span{
+    color: orangered;
+}
