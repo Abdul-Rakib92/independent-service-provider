@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Fit & Yoga",
+        "price": "400",
+        "description": "I take Fit & Yoga class are available Sunday to Thursday at morning 7am only. I take group session only.",
+        "img": "https://i.ibb.co/sRbCgBx/yoga1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Weight Loss",
+        "price": "500",
+        "description": "I take Weight Loss class from afternoon 4pm to 6pm. Weight Loss class available everyday except Friday.",
+        "img": "https://i.ibb.co/3FqLXwv/slim2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Muscle Building",
+        "price": "750",
+        "description": "I take Muscle Building class from evening 7:30pm to 10:30pm. Muscle Building class available everyday.",
+        "img": "https://i.ibb.co/HCGZH76/body-building3.jpg"
+    }
+    
+]
