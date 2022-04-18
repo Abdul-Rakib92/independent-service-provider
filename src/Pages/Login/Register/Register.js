@@ -1,18 +1,22 @@
-import React from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 import ShareLogin from "../ShareLogin/ShareLogin";
 import "./Register.css";
 
 const Register = () => {
-
+  const [agree, setAgree] = useState(false)
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  
 
   const navigate = useNavigate();
 
@@ -20,19 +24,23 @@ const Register = () => {
     navigate("/login");
   };
 
-  if (user) {
-      navigate('/home');
-      
-  }
+  if(loading || updating){
+    return <Loading></Loading>
+}
 
-  const handleRegister = (event) => {
+
+  const handleRegister = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+
+    await updateProfile({displayName: name});
+    navigate("/home");
   };
+  
   return (
     <div className="form-register">
       <h2 className="text-primary mb-5 mt-5">Please Register</h2>
@@ -58,7 +66,13 @@ const Register = () => {
           required
         />
 
-        <input type="submit" className="rounded-pill btn btn-primary w-25" value="Register" />
+        <input onClick={() => setAgree(!agree)} type="checkbox" name="condition" id="condition" />
+
+        <label className={`ps-2 ${agree ? "" : "text-danger"}`} htmlFor="terms">
+          Accept Muscle Stone Terms and Conditions
+        </label>
+
+        <input disabled={!agree} type="submit" className="rounded-pill btn btn-primary w-25 mx-auto mt-3" value="Register" />
       </form>
       <p>
         Already have an account? 
