@@ -9,8 +9,10 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
+    const location = useLocation();
 
-
+    let form = location.state?.from?.pathname || "/";
+  
     const [
         signInWithEmailAndPassword,
         user,
@@ -18,9 +20,10 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    // if(user) {
-        navigate('/home')
-    // }
+     if(user) {
+        navigate(form, { replace: true });
+        
+     }
 
     const handleLogin = event => {
         event.preventDefault();
