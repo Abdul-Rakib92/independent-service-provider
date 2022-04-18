@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import ShareLogin from "../ShareLogin/ShareLogin";
 
 const Login = () => {
 
@@ -45,25 +46,27 @@ const Login = () => {
       <Form onSubmit={handleLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+          <Form.Control ref={emailRef} type="email" className="rounded-pill" placeholder="Enter email" required />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control ref={passwordRef} type="password" placeholder="Password" required/>
+          <Form.Control ref={passwordRef} type="password" className="rounded-pill" placeholder="Password" required/>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+        
+        <Button className="rounded-pill w-25 mb-3" variant="primary" type="submit">
+          Login
         </Button>
       </Form>
 
-      <p>New to Muscle Stone? <Link to="/register" className="text-decoration-none text-danger pe-auto" onClick={navigateRegister}>Please Register</Link></p>
+      <p>New to Muscle Stone? <Link to="/register" className="text-decoration-none text-primary pe-auto" onClick={navigateRegister}> Please Register</Link></p>
+
+      <ShareLogin></ShareLogin>
+
     </div>
   );
 };
