@@ -1,4 +1,4 @@
-# Muscle Stone Personal Coach
+# Muscle Stone Personal Coach (Website Name)
 
 https://muscle-stone-assignment-10.web.app/
 
